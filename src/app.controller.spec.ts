@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { BotService } from './bot/bot.service';
 
 describe('AppController', () => {
   let app: TestingModule;
@@ -8,7 +8,11 @@ describe('AppController', () => {
   beforeAll(async () => {
     app = await Test.createTestingModule({
       controllers: [AppController],
-      providers: [AppService]
+      providers: [BotService]
     }).compile();
+  });
+
+  it('should be defined', () => {
+    expect(app).toBeDefined();
   });
 });
