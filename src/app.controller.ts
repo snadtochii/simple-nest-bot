@@ -1,12 +1,13 @@
-import { Get, Controller } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Get, Controller, Res } from '@nestjs/common';
+import { BotService } from 'bot/bot.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private botService: BotService) {}
 
   @Get()
-  root(): string {
-    return this.appService.root();
+  getDialog(@Res() res) {
+    this.botService.initBot();
+    res.send('started');
   }
 }
